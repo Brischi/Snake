@@ -12,6 +12,8 @@
     <None Remove="BorderBackground6.png" />
     <None Remove="Logo1.webp" />
     <None Remove="Logo9.png" />
+    <None Remove="ScoreboardBoarder1.png" />
+    <None Remove="ScoreboardBorder2.png" />
     <None Remove="SpaceBackground1.jpg" />
     <None Remove="SpaceBackground2.jpg" />
   </ItemGroup>
@@ -19,6 +21,8 @@
   <ItemGroup>
     <Resource Include="BorderBackground6.png" />
     <Resource Include="Logo9.png" />
+    <Resource Include="ScoreboardBoarder1.png" />
+    <Resource Include="ScoreboardBorder2.png" />
     <Resource Include="SpaceBackground1.jpg" />
     <Resource Include="SpaceBackground2.jpg" />
   </ItemGroup>

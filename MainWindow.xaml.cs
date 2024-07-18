@@ -16,6 +16,8 @@ namespace SnakeGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Rectangle food;
+        private Ellipse snakeHead;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,8 +33,10 @@ namespace SnakeGame
             int rows = 22; //Zeilen 
             int columns = 40; //Spalten
 
-            //Add columns to the grid 
-            for (int i = 0; i < columns; i++) //für die GridCollum-Definition
+
+
+            //Add columns to the grid
+            for (int i = 0; i < columns; i++)
             {
                 GameArea.ColumnDefinitions.Add(new ColumnDefinition());
             }
@@ -49,41 +53,30 @@ namespace SnakeGame
         {
             //Initialize the snake head
 
-            SnakeHead = new Ellipse
+            snakeHead = new Ellipse
             {
                 Width = 20,
                 Height = 20,
                 Fill = Brushes.Green
             };
-            
+            PositionElementInGrid(snakeHead, 10, 20);   //Start at row 10, column 20
+            GameArea.Children.Add(snakeHead);       //Add the snake head to the grid
+
             //Initialize the food 
+            food = new Rectangle
+            {
+                Width = 20,
+                Height = 20,
+                Fill = Brushes.Red
+            };
+            PositionElementInGrid(food, 5, 15);        //Start at row 5, column 15
+            GameArea.Children.Add(food);        //Add the food to the grid 
         }
 
-        private void SnakeHeadMovement (object sender, KeyEventArgs e)
+        private void PositionElementInGrid(UIElement element, int row, int column)
         {
-           // this.Focus(); --> stellt sicher, dass dieses Fenster fokussiert wird bei Snakeheadmovement. vll brauchen wir das auch nicht
-            switch (e.Key)
-            {
-                case Key.Left:
-              
-                    //hier: SnakeHead.Position....rows -=1;
-                    PositionElementInGrid(snakeHead, "", "-1"); //erst rows, dann collum
-                    break;
-                case Key.Right:
-                    // ... rows +=1;
-                    PositionElementInGrid(snakeHead, "", "+1");
-                    break;
-                case Key.Up:
-                    PositionElementInGrid(snakeHead, "-1", "");
-                    //collums -=1;
-                    break;
-                case Key.Down:
-                    //collums +=1;
-                    PositionElementInGrid(snakeHead, "+1", "");
-                 
-                    break;
-            }
-            e.Handled = true; 
+            Grid.SetRow(element, row);
+            Grid.SetColumn(element, column);
         }
     }
 }

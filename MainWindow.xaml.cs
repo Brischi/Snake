@@ -29,10 +29,11 @@ namespace SnakeGame
         private void InitializeGameGrid()
         {
             //Define the number of rows and columns
+            //Grid-Gitter
+            int rows = 22; //Zeilen 
+            int columns = 40; //Spalten
 
-            int rows = 22;
-            int columns = 40;
-            //Cell Size (20x20)
+
 
             //Add columns to the grid
             for (int i = 0; i < columns; i++)
@@ -45,6 +46,7 @@ namespace SnakeGame
             {
                 GameArea.RowDefinitions.Add(new RowDefinition());
             }
+
         }
 
         private void InitializeGameElements()

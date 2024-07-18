@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SnakeGame
 {
@@ -18,10 +19,12 @@ namespace SnakeGame
     {
         private Rectangle food;
         private Ellipse snakeHead;
+        private DispatcherTimer dispatcherTimer;
         private int SnakeCurrentRow;
         private int SnakeCurrentColumn;
         private int FoodCurrentRow;
         private int FoodCurrentColumn;
+        private int timeMax;
 
         public MainWindow()
         {
@@ -29,6 +32,7 @@ namespace SnakeGame
             InitializeGameGrid();
             InitializeGameElements();
             this.KeyDown += SnakeHeadMovement;
+            StartTimer();
         }
 
         private void InitializeGameGrid()
@@ -77,7 +81,7 @@ namespace SnakeGame
             UpdateFoodPosition();
         }
 
-        private void PositionElementInGrid(UIElement element,int  row, int column)
+        private void PositionElementInGrid(UIElement element,int  row, int column) //Methode um Elemente allgemein so platzieren zu können
         {
             Grid.SetRow(element, row);
             row = SnakeCurrentRow;
@@ -116,5 +120,33 @@ namespace SnakeGame
                     break;
             }
         }
+
+        private void StartTimer() //Dispatcher-Timer-Methode
+        {
+            dispatcherTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+           dispatcherTimer.Tick += DispatcherTimer_Tick;
+            timeMax = 0; //hier wird die Zeit ab null eingestellt
+         
+            dispatcherTimer.Start(); //startet die Timer-Methode
+        }
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)// hier wird alles reingeschrieben, was passieren soll, bei jedem Tick der Zeit
+        {
+            TimerTextBlock.Text = timeMax.ToString(); //sendet an Timer
+            if (timeMax <= 100)
+            {
+                timeMax++;
+            }
+            else
+            { 
+                dispatcherTimer.Stop();
+
+            }
+
+        }
+
     }
 }

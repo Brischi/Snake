@@ -18,12 +18,17 @@ namespace SnakeGame
     {
         private Rectangle food;
         private Ellipse snakeHead;
+        private int SnakeCurrentRow;
+        private int SnakeCurrentColumn;
+        private int FoodCurrentRow;
+        private int FoodCurrentColumn;
+
         public MainWindow()
         {
             InitializeComponent();
             InitializeGameGrid();
             InitializeGameElements();
-            
+            this.KeyDown += SnakeHeadMovement;
         }
 
         private void InitializeGameGrid()
@@ -32,8 +37,6 @@ namespace SnakeGame
             //Grid-Gitter
             int rows = 22; //Zeilen 
             int columns = 40; //Spalten
-
-
 
             //Add columns to the grid
             for (int i = 0; i < columns; i++)
@@ -46,7 +49,6 @@ namespace SnakeGame
             {
                 GameArea.RowDefinitions.Add(new RowDefinition());
             }
-
         }
 
         private void InitializeGameElements()
@@ -60,6 +62,7 @@ namespace SnakeGame
                 Fill = Brushes.Green
             };
             PositionElementInGrid(snakeHead, 10, 20);   //Start at row 10, column 20
+            UpdateSnakePosition();
             GameArea.Children.Add(snakeHead);       //Add the snake head to the grid
 
             //Initialize the food 
@@ -70,13 +73,48 @@ namespace SnakeGame
                 Fill = Brushes.Red
             };
             PositionElementInGrid(food, 5, 15);        //Start at row 5, column 15
-            GameArea.Children.Add(food);        //Add the food to the grid 
+            GameArea.Children.Add(food);        //Add the food to the grid
+            UpdateFoodPosition();
         }
 
-        private void PositionElementInGrid(UIElement element, int row, int column)
+        private void PositionElementInGrid(UIElement element,int  row, int column)
         {
             Grid.SetRow(element, row);
+            row = SnakeCurrentRow;
             Grid.SetColumn(element, column);
+            column = SnakeCurrentColumn;   
+        }
+
+        private void UpdateSnakePosition()
+        {
+          PositionElementInGrid(snakeHead, SnakeCurrentRow, SnakeCurrentColumn);
+
+        }
+        private void UpdateFoodPosition()
+        {
+            PositionElementInGrid(food, SnakeCurrentRow, SnakeCurrentColumn);
+        }
+        private void SnakeHeadMovement(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Up:
+                    SnakeCurrentRow -= 1;
+                    UpdateSnakePosition();
+                    break;
+                case Key.Down:
+                    SnakeCurrentRow += 1;
+                    UpdateSnakePosition();
+                    break;
+                case Key.Left:
+                    SnakeCurrentColumn -= 1;
+                    UpdateSnakePosition();
+                    break;
+                case Key.Right:
+                    SnakeCurrentColumn += 1;
+                    UpdateSnakePosition();
+                    break;
+            }
         }
     }
 }

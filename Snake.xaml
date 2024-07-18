@@ -1,0 +1,35 @@
+﻿<Window x:Class="SnakeGame.Snake"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SnakeGame"
+        mc:Ignorable="d"
+        Title="Snake" Height="450" Width="800">
+    <Grid>
+        <!--Background-->
+        <Image Source="/SpaceBackground2.jpg" Stretch="UniformToFill" Panel.ZIndex="0"/>
+        
+        <!--Main Grid Layout-->
+        <Grid Panel.ZIndex="1">
+            <!-- Single Column and Row -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        
+        <!--Logo-->
+            <Image Source="/Logo9.png" Stretch="Fill" Height="NaN" Width="NaN" Margin="200,0,205,0">
+            </Image>
+            <Border BorderThickness="5" BorderBrush="AntiqueWhite" Margin="195,0,200,0">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+
+            </Border>
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Logo1.webp" />
+    <None Remove="Logo9.png" />
+    <None Remove="SpaceBackground1.jpg" />
+    <None Remove="SpaceBackground2.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Logo9.png" />
+    <Resource Include="SpaceBackground1.jpg" />
+    <Resource Include="SpaceBackground2.jpg" />
+  </ItemGroup>
+
+</Project>

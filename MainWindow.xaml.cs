@@ -23,6 +23,8 @@ namespace SnakeGame
         private int FoodCurrentRow;
         private int FoodCurrentColumn;
 
+        private Random random = new Random();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -81,8 +83,10 @@ namespace SnakeGame
         {
             Grid.SetRow(element, row);
             row = SnakeCurrentRow;
+            row = FoodCurrentRow;
             Grid.SetColumn(element, column);
-            column = SnakeCurrentColumn;   
+            column = SnakeCurrentColumn;
+            column = FoodCurrentColumn;
         }
 
         private void UpdateSnakePosition()
@@ -91,30 +95,59 @@ namespace SnakeGame
 
         }
         private void UpdateFoodPosition()
-        {
-            PositionElementInGrid(food, SnakeCurrentRow, SnakeCurrentColumn);
+        { 
+            
+            PositionElementInGrid(food, FoodCurrentRow, FoodCurrentColumn);
         }
         private void SnakeHeadMovement(object sender, KeyEventArgs e)
         {
+
             switch (e.Key)
             {
                 case Key.Up:
                     SnakeCurrentRow -= 1;
                     UpdateSnakePosition();
+                    
                     break;
                 case Key.Down:
                     SnakeCurrentRow += 1;
                     UpdateSnakePosition();
+                   
                     break;
                 case Key.Left:
                     SnakeCurrentColumn -= 1;
                     UpdateSnakePosition();
+                    
                     break;
                 case Key.Right:
                     SnakeCurrentColumn += 1;
                     UpdateSnakePosition();
+                   
                     break;
             }
+        }
+        /*
+        private void BorderCollisionDetection()
+        {
+            int rows = 22;
+            int columns = 40;
+            
+
+            if (SnakeCurrentColumn < 0 ||  SnakeCurrentColumn > columns) //Checkt nach horizontaler Kollision
+            {
+                return;
+            }
+            else if (SnakeCurrentRow < 0 || SnakeCurrentRow >= rows)    //Checkt nach vertikaler Kollision
+            {
+                Close();
+            }
+            else
+            {
+                return;
+            }
+            */
+            
+
         }
     }
 }

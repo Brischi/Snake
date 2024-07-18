@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnakeGame"
         mc:Ignorable="d"
-        KeyDown= "SnakeHeadMovement"
         Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <!-- Background image for the window border -->
-        <Image Source="C:\Users\Margit.Aigner\Source\Repos\Brischi\Snake\BorderBackground6.png" Stretch="Fill" Panel.ZIndex="0" Margin="-20,-11,0,0"/>
+        <Image Source="C:\Users\Fabian.Wurdack\Source\Repos\Brischi\Snake\BorderBackground6.png" Stretch="Fill" Panel.ZIndex="0" Margin="-20,-11,0,0"/>
 
         <!-- Main Grid Layout -->
         <Grid Panel.ZIndex="1">
@@ -21,17 +20,13 @@
             </Grid.ColumnDefinitions>
 
             <!-- Left Grid: Game Area -->
-            <Grid x:Name="GameArea" Background="Black" Margin="55,34,0,45" Grid.Column="0">
-                <Border x:Name="GameBorder" BorderThickness="5" BorderBrush="#FF2CFFDD" Background="Transparent" Panel.ZIndex="2" Visibility="Visible" Margin="0,0,45,0">
-                    <Grid>
-
-                        <!-- Game area content will be added dynamically in code-behind -->
-                            
-                       
-                    </Grid>
-                </Border>
-            </Grid>
-
+            <Border x:Name="GameBorder" BorderThickness="5" BorderBrush="#FF2CFFDD" Background="Transparent" Panel.ZIndex="2" Visibility="Visible" Margin="35,29,0,30">
+                <Grid x:Name="GameArea" Background="Black" Grid.Column="0" Visibility="Visible">
+                    <!-- Game area content will be added dynamically in code-behind -->
+                </Grid>
+            </Border>
+            
+            
             <!-- Right Grid: Scoreboard -->
             <Grid Grid.Column="1" Margin="10">
                 <Image Source="/ScoreboardBorder2.png" Stretch="Fill" Margin="0,14,0,30"/>

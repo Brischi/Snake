@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="BorderBackground6.png" />
     <None Remove="Logo1.webp" />
     <None Remove="Logo9.png" />
     <None Remove="SpaceBackground1.jpg" />
@@ -16,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="BorderBackground6.png" />
     <Resource Include="Logo9.png" />
     <Resource Include="SpaceBackground1.jpg" />
     <Resource Include="SpaceBackground2.jpg" />

@@ -58,5 +58,32 @@ namespace SnakeGame
             
             //Initialize the food 
         }
+
+        private void SnakeHeadMovement (object sender, KeyEventArgs e)
+        {
+           // this.Focus(); --> stellt sicher, dass dieses Fenster fokussiert wird bei Snakeheadmovement. vll brauchen wir das auch nicht
+            switch (e.Key)
+            {
+                case Key.Left:
+              
+                    //hier: SnakeHead.Position....rows -=1;
+                    PositionElementInGrid(snakeHead, "", "-1"); //erst rows, dann collum
+                    break;
+                case Key.Right:
+                    // ... rows +=1;
+                    PositionElementInGrid(snakeHead, "", "+1");
+                    break;
+                case Key.Up:
+                    PositionElementInGrid(snakeHead, "-1", "");
+                    //collums -=1;
+                    break;
+                case Key.Down:
+                    //collums +=1;
+                    PositionElementInGrid(snakeHead, "+1", "");
+                 
+                    break;
+            }
+            e.Handled = true; 
+        }
     }
 }

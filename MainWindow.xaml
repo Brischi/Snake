@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SnakeGame"
         mc:Ignorable="d"
+        KeyDown= "SnakeHeadMovement"
         Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <!-- Background image for the window border -->
-        <Image Source="C:\Users\Fabian.Wurdack\OneDrive - Unternehmensgruppe Eckert\SnakeGame\BorderBackground6.png" Stretch="Fill" Panel.ZIndex="0" Margin="-20,-11,0,0"/>
+        <Image Source="C:\Users\Margit.Aigner\Source\Repos\Brischi\Snake\BorderBackground6.png" Stretch="Fill" Panel.ZIndex="0" Margin="-20,-11,0,0"/>
 
         <!-- Main Grid Layout -->
         <Grid Panel.ZIndex="1">

@@ -16,6 +16,8 @@ namespace SnakeGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Rectangle food;
+        private Ellipse snakeHead;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace SnakeGame
 
             int rows = 22;
             int columns = 40;
+            //Cell Size (20x20)
 
             //Add columns to the grid
             for (int i = 0; i < columns; i++)
@@ -48,14 +51,31 @@ namespace SnakeGame
         {
             //Initialize the snake head
 
-            SnakeHead = new Ellipse
+            snakeHead = new Ellipse
             {
                 Width = 20,
                 Height = 20,
                 Fill = Brushes.Green
             };
-            
+            PositionElementInGrid(snakeHead, 10, 20);   //Start at row 10, column 20
+            GameArea.Children.Add(snakeHead);       //Add the snake head to the grid
+
             //Initialize the food 
+            food = new Rectangle
+            {
+                Width = 20,
+                Height = 20,
+                Fill = Brushes.Red
+            };
+            PositionElementInGrid(food, 5, 15);        //Start at row 5, column 15
+            GameArea.Children.Add(food);        //Add the food to the grid 
         }
+
+        private void PositionElementInGrid(UIElement element, int row, int column)
+        {
+            Grid.SetRow(element, row);
+            Grid.SetColumn(element, column);
+        }
+
     }
 }

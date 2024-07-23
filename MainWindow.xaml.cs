@@ -97,12 +97,15 @@ namespace SnakeGame
 
         private void ShowOuchMessage()
         {
+            Console.WriteLine("ShowOuchMessage called.");
             OuchTextBlock.Visibility = Visibility.Visible;
-            OuchTextBlock.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
-            OuchTextBlock.Arrange(new Rect(OuchTextBlock.DesiredSize));
+
+            // Force layout update before positioning
+            OuchTextBlock.UpdateLayout();
+            GameCanvas.UpdateLayout();
 
             double left = (GameCanvas.ActualWidth - OuchTextBlock.ActualWidth) / 2;
-            double top = (GameCanvas.ActualHeight - OuchTextBlock.ActualHeight) / 2;
+            double top = 10; // Adjust the offset as needed
 
             Canvas.SetLeft(OuchTextBlock, left);
             Canvas.SetTop(OuchTextBlock, top);
@@ -116,9 +119,6 @@ namespace SnakeGame
             };
             timer.Start();
         }
-
-
-
 
         private void InitializeGameGrid()
         {
@@ -316,6 +316,9 @@ namespace SnakeGame
             gameTimer.Stop();
             scoreTimer.Stop();
 
+            // Explicitly reset visibility before restarting
+            OuchTextBlock.Visibility = Visibility.Collapsed;
+
             GameArea.Children.Clear();
             GameArea.ColumnDefinitions.Clear();
             GameArea.RowDefinitions.Clear();
@@ -331,12 +334,12 @@ namespace SnakeGame
             UpdateTimer();
             UpdateHeartsDisplay();
 
-            OuchTextBlock.Visibility = Visibility.Collapsed;
+            // Force a layout update
+            GameCanvas.UpdateLayout();
 
             gameTimer.Start();
             scoreTimer.Start();
         }
-
 
         private void ConsumeFood()
         {

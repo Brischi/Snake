@@ -8,7 +8,7 @@
         Title="MainWindow" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
     <Grid>
         <!-- Background image for the window border -->
-        <Image Source="C:\Users\fabia\OneDrive - Unternehmensgruppe Eckert\SnakeGame\BorderBackground6.png" Stretch="Fill" Panel.ZIndex="0" HorizontalAlignment="Stretch" Height="NaN" VerticalAlignment="Stretch" Width="NaN"/>
+        <Image Source="C:\Users\Fabian.Wurdack\OneDrive - Unternehmensgruppe Eckert\SnakeGame\BorderBackground6.png" Stretch="Fill" Panel.ZIndex="0" HorizontalAlignment="Stretch" Height="NaN" VerticalAlignment="Stretch" Width="NaN"/>
 
         <!-- Main Grid Layout -->
         <Grid Panel.ZIndex="1">
@@ -30,13 +30,13 @@
             <!-- Right Grid: Scoreboard -->
             <Grid Grid.Column="1" Margin="10,10,10,10">
                 <Image Source="/ScoreboardBorder2.png" Stretch="Fill" Height="NaN" Width="NaN"/>
-                <StackPanel Orientation="Vertical" Margin="20,40,20,40">
-                    <TextBlock x:Name="PointsTextBlock" Text="Points: 0" FontSize="20" Foreground="#FFF7EFEF" Margin="0,10,0,10" HorizontalAlignment="Center"/>
-                    <TextBlock x:Name="TimerTextBlock" Text="Timer: 00:00" FontSize="20" Foreground="#FFF3E9E9"/>
-                    <Image x:Name="HeartsImage" Source="/HeartStatus_3.png" Stretch="Fill" Height="56" Width="85"/>
+                <Canvas x:Name="ScoreboardCanvas" Margin="20,40,20,40">
+                    <TextBlock x:Name="PointsTextBlock" Text="Points: 0" FontSize="20" Foreground="#FFF7EFEF" Canvas.Left="10" Canvas.Top="10"/>
+                    <TextBlock x:Name="TimerTextBlock" Text="Timer: 00:00" FontSize="20" Foreground="#FFF3E9E9" Canvas.Left="10" Canvas.Top="40"/>
+                    <Image x:Name="HeartsImage" Source="C:\Users\Fabian.Wurdack\OneDrive - Unternehmensgruppe Eckert\SnakeGame\HeartStatus_3.png" Stretch="Fill" Height="56" Width="85" Canvas.Left="10" Canvas.Top="70"/>
                     <!-- Add the "Play again" button -->
-                    <Button x:Name="PlayAgainButton" Content="Play again" FontSize="16" Width="100" Height="40" Margin="0,20,0,0" Click="PlayAgainButton_Click" Visibility="Collapsed"/>
-                </StackPanel>
+                    <Button x:Name="PlayAgainButton" Content="Play again" FontSize="16" Width="100" Height="40" Canvas.Left="10" Canvas.Top="130" Click="PlayAgainButton_Click" Visibility="Collapsed"/>
+                </Canvas>
             </Grid>
         </Grid>
     </Grid>
